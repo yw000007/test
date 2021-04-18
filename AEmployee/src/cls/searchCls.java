@@ -1,14 +1,14 @@
 package cls;
 
-import java.util.List;
 import java.util.Scanner;
+import java.util.List;
 
 import dao.EmpDao;
-
 import dto.EmpDto;
 
 
 public class searchCls {
+	
 	Scanner sc = new Scanner(System.in);
 	
 	public void search() {
@@ -27,7 +27,7 @@ public class searchCls {
 		            System.out.println(dto.toString());
 		        }
 	        } else {
-	            System.out.println("정보를 찾을 수 없습니다.");
+	            System.out.println("정보를 찾을 수 없습니다");
 	        }
 	 
 	      

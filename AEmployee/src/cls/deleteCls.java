@@ -1,7 +1,6 @@
 package cls;
 
 import java.util.Scanner;
-
 import dao.EmpDao;
 import dto.EmpDto;
 
@@ -17,11 +16,10 @@ public class deleteCls {
 		boolean b = dao.delete(id);
 		if(b) {
 			System.out.println("삭제 되었습니다");
+			
 			return;
 		}
 		
 		System.out.println("삭제되지 않았습니다");
 	}
-
-
 }

@@ -11,17 +11,18 @@ import cls.printCls;
 public class MainClass {
 	
 	public static void main(String[] args) {
+		
 		Scanner scan = new Scanner(System.in);
 
-		insertCls ic = new insertCls();
-		deleteCls dc = new deleteCls();
-		updateCls uc = new updateCls();
-		searchCls sc = new searchCls();
-		printCls pc = new printCls();
+		insertCls isCls = new insertCls();
+		deleteCls delCls = new deleteCls();
+		updateCls upCls = new updateCls();
+		searchCls scCls = new searchCls();
+		printCls prCls = new printCls();
 
-		boolean run = true;
+		boolean b = true;
 
-		while (run) {
+		while (b) {
 			System.out.println("1. 등록 : ");
 			System.out.println("2. 삭제 : ");
 			System.out.println("3. 수정 : ");
@@ -30,33 +31,33 @@ public class MainClass {
 			System.out.println("6. 종료 : ");
 			System.out.print("==================== > ");
 
-			int key = scan.nextInt();
+			int k = scan.nextInt();
 
-			switch (key) {
-			case 1: // 등록
-				ic.insert();
+			switch (k) {
+			case 1: //insert
+				isCls.insert();
 				break;
 
 				
-			case 2: // 삭제
-				dc.delete();
+			case 2: //delete
+				delCls.delete();
 				break;
 
-			case 3: // 수정
-				uc.update();
+			case 3: //update
+				upCls.update();
 				break;
 
-			case 4: // 검색
-				sc.search();
+			case 4: //search
+				scCls.search();
 				break;
 				
-			case 5: // 출력
-                pc.print();
+			case 5: //print
+				prCls.print();
                 break;
 
-			case 6: // 종료
-				System.out.println("프로그램 종료");
-				run = false;
+			case 6: //end!!
+				System.out.println("프로그램 종료을 종료합니다.");
+				b = false;
 				break;
 			}
 		}

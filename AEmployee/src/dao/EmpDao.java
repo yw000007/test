@@ -2,8 +2,8 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +30,10 @@ public class EmpDao {
 	public boolean insert(EmpDto dto) {
 		String sql = " INSERT INTO TB_EMPP(ID, NAME, PHONE, DEPT) "
 				+ " VALUES( ?, ?, ?, ? ) ";
-//		System.out.println(sql);
 				
 		Connection conn = DBConnection.getConnection();	
 		PreparedStatement psmt = null;
-		System.out.println(dto.getId());
+//		System.out.println(dto.getId());
 		
 		int count = 0;
 		
@@ -56,10 +55,7 @@ public class EmpDao {
 
 	
 	 public boolean delete(String id) {
-		 
 	        String sql = " DELETE FROM TB_EMPP WHERE ID = '" + id + "' ";
-	 
-	        System.out.println(sql);
 	 
 	        Connection conn = DBConnection.getConnection();
 	        Statement stmt = null;
@@ -69,8 +65,6 @@ public class EmpDao {
 	        try {
 	            stmt = conn.createStatement();
 	            count = stmt.executeUpdate(sql);
-	 
-	            System.out.println("삭제되었습니다.");
 	 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
@@ -85,49 +79,42 @@ public class EmpDao {
 	            }
 	 
 	        }
+	        
 	        return count > 0 ? true : false;
 	    }
 	 
-	 public boolean Update(String id, String dept) {
-	        
-	        String sql = " UPDATE TB_EMPP " + "SET DEPT = " + dept + " " + "WHERE ID = '" + id + "'";
-	 
-	        System.out.println(sql);
+	 public boolean update(String id, String dept) {
+	        String sql = " UPDATE TB_EMPP " + "SET DEPT = '" + dept + "' " + "WHERE ID = '" + id + "'";
 	 
 	        Connection conn = DBConnection.getConnection();
 	        Statement stmt = null;
-	 
+	        System.out.println(dept);
 	        int count = 0;
 	 
-	        // connect
+	        //conn
 	        try {
+	        	conn = DBConnection.getConnection();
+//	        	System.out.println("1/3 왔나");
+	        	System.out.println(conn);
 	            stmt = conn.createStatement();
-	 
-	            // process
+//	            System.out.println("2/3 왔나");
+	            System.out.println(stmt);
 	            count = stmt.executeUpdate(sql);
-	 
-	            System.out.println("수정 완료입니다.");
+	            
+//	            System.out.println("3/3 왔나");
 	 
 	        } catch (SQLException e) {
+//	        	System.out.println("실패했나");
 	            e.printStackTrace();
 	        } finally {
-	 
-	            try {
-	                DBClose.close(conn, stmt, null);
-	 
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	            }
-	 
+	            DBClose.close(conn, stmt, null);
 	        }
+	        
 	        return count > 0 ? true : false;
 	    }
 	 
 	 public List<EmpDto> getList(String id) {
-		 
 	        String sql = " SELECT * " + " FROM TB_EMPP WHERE ID = ?";
-	 
-	        System.out.println(sql);
 	 
 	        Connection conn = DBConnection.getConnection();
 	        PreparedStatement psmt = null;
@@ -152,23 +139,21 @@ public class EmpDao {
 	 
 	            }
 	        } catch (SQLException e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        } finally {
 	            DBClose.close(conn, psmt, rs);
 	        }
+	        
 	        return list;
 	    }
 	 
 	 
 	 public List<EmpDto> print() {
 		  String sql = " SELECT * " + " FROM TB_EMPP ";
-		  
-	        System.out.println(sql);
 	 
 	        Connection conn = DBConnection.getConnection();
 	        PreparedStatement psmt = null;
-	        ResultSet rs = null; // DB로부터 결과를 리턴받는 값
+	        ResultSet rs = null;
 	 
 	        List<EmpDto> list = new ArrayList<EmpDto>();
 	 
@@ -188,20 +173,13 @@ public class EmpDao {
 	 
 	            }
 	        } catch (SQLException e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        } finally {
 	            DBClose.close(conn, psmt, rs);
 	        }
+	        
 	        return list;
-	 
 	}
 
 	
-	
 }
-
-
-
-
-

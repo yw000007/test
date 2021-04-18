@@ -7,15 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.EmpDao;
 import db.DBClose;
 import db.DBConnection;
+import dao.EmpDao;
 import dto.EmpDto;
 
-
 public class printCls {
-
-	
 
 	public void print() {
 	
@@ -31,7 +28,7 @@ public class printCls {
 		            System.out.println(dto.toString());
 		        }
 	        } else {
-	            System.out.println("정보를 찾을 수 없습니다.");
+	            System.out.println("정보를 찾을 수 없습니다");
 	        }
 	 
 	      
